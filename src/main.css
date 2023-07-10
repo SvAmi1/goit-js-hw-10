@@ -1,0 +1,20 @@
+body {
+  background-color: lightskyblue;
+}
+
+.breed-select {
+  height: 30px;
+  width: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.loader {
+  /* margin-top: 25px; */
+  display: none;
+}
+
+.error {
+  /* margin-top: 25px; */
+  display: none;
+}
