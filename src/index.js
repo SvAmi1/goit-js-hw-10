@@ -4,9 +4,9 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const infoBox = document.querySelector('.cat-info');
-const loaderEl = document.querySelector('.loader');
+// const loaderEl = document.querySelector('.loader');
 const selectorEl = document.querySelector('.breed-select');
-const errorEl = document.querySelector('.error');
+// const errorEl = document.querySelector('.error');
 
 
 function makeSelectorOfCats() {
@@ -18,10 +18,20 @@ function makeSelectorOfCats() {
     })
     .catch((err) => Notify.failure('Oops! Something went wrong! Try reloading the page!'),)
 }
+makeSelectorOfCats();
+
+function renderBreedList(data) {
+    const breed = data.breeds[0];
+    const markup = `
+      <img src="${breed.url}" alt="${breed[0].name} height="600" width="500" ">
+      <h1>${breed[0].name}</h1>
+      <p>${breed[0].description}</p>
+      <h2>Temperament: ${breed[0].temperament}</h2>`;
+      infoBox.innerHTML = markup;
+}
 
 function addBreedInfo() {
-    loaderIsActive();
-    // infoBox.style.display = 'block';
+    // loaderIsActive();
     fetchCatByBreed(selectorEl.value)
     .then((data) => {
         infoBox.style.display = 'block';
@@ -36,16 +46,5 @@ function loaderIsActive() {
     Loading.remove(1000);
 }
 
-selectorEl.addEventListener('change', makeSelectorOfCats());
+selectorEl.addEventListener('change', addBreedInfo());
 
-function renderBreedList(data) {
-    const breed = data.breeds[0];
-    const markup = `
-      <img src="${breed.url}" alt="${breed[0].name} height="600" width="500" ">
-      <h1>${breed[0].name}</h1>
-      <p>${breed[0].description}</p>
-      <h2>Temperament: ${breed[0].temperament}</h2>`;
-      infoBox.innerHTML = markup;
-}
-
-addBreedInfo();
