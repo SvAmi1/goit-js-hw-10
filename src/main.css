@@ -1,5 +1,5 @@
 body {
-  background-color: lightskyblue;
+  background-color: rgba(65, 107, 178, 0.37);
 }
 
 .breed-select {
@@ -17,4 +17,13 @@ body {
 .error {
   /* margin-top: 25px; */
   display: none;
+}
+
+.cat-info {
+  display: block;
+  text-align: center;
+}
+
+.cat-img {
+  margin-top: 20px;
 }

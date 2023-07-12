@@ -17,21 +17,13 @@ export function fetchBreeds() {
           });
       }
 
-export function fetchCatByBreed(breedId) {
-  return fetch(`${ID_URL}?breed_ids=${breedId}&api_key=${API_KEY}`)
-  .then(resp => {
-    if (!resp.ok) throw new Error(resp.status);
-    return resp.json();
-  })
-  .catch(error  => console.error("Error fetching cat:", error));
-}
-
-  // return axios.get(ID_URL)
-  //   .then(resp => {
-  //     return resp.data[0];
-  //   })
-  //   .catch(error => {
-  //     console.error("Error fetching cat:", error);
-  //     return null;
-  //   });}
-  //   // console.log(fetchCatByBreed())
+  export function fetchCatByBreed(breedId) {
+    return axios.get(`${ID_URL}?breed_ids=${breedId}`)
+      .then(response => {
+        return response.data[0];
+      })
+      .catch(error => {
+        console.error("Error fetching cat:", error);
+        return null;
+      });
+  }
